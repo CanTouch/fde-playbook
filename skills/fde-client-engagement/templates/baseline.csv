@@ -1,0 +1,9 @@
+metric,definition,how_to_ask,source_of_real_number,baseline_value,date_measured,confirmed_by_owner,day_30,day_90
+process_steps,Steps in the real process,Walk me through the last three cases,Interviews plus mined map,,,,,
+exception_loops,Times work loops back to an earlier step,How often do you go back for missing details,Interviews plus sample of 30 cases,,,,,
+cycle_time_days,First contact to paid or lost,How long from first message to paid or lost,Timestamps in chat or CRM,,,,,
+idle_days,Days an item sits with nobody working on it,How long does a quote sit before anyone chases it,Last-contact date on open quotes,,,,,
+share_never_followed_up,Quotes with no outbound message after sending,How many quotes did nobody chase,Open quotes with no later outbound message,,,,,
+touch_time_minutes,Minutes of actual work per item,How long do you spend on one reply or quote,Owner estimate checked against a week of notes,,,,,
+cost_per_item,Staff cost per item handled,Hours a week on this and whose hours,Hours times hourly cost divided by volume,,,,,
+straight_through_rate,Share handled with no human typing,What share is answered without anyone typing,Count after build,,,,,

@@ -1,0 +1,75 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FDE Engagement Flow</title>
+<style>
+:root{--bg:#F1F4F1;--surface:#FFFFFF;--ink:#16221F;--ink2:#4B5B56;--line:#D3DBD6;--accent:#0B6E5E}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0E1614;--surface:#162220;--ink:#E6EEEA;--ink2:#A2B3AD;--line:#2A3935;--accent:#4FC3AA;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1614;--surface:#162220;--ink:#E6EEEA;--ink2:#A2B3AD;--line:#2A3935;--accent:#4FC3AA;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding-inline:16px;padding-block:24px 56px;line-height:1.5}
+.wrap{max-width:980px;margin-inline:auto}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0 0 8px;letter-spacing:-.01em}
+p{margin:0 0 14px;color:var(--ink2);max-width:62ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:16px 0 20px;font-size:14px}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:14px;height:14px;border-radius:3px;border:2px solid;display:inline-block}
+.fig{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:16px;overflow-x:auto}
+.fig pre.mermaid{margin:0;min-width:640px;display:flex;justify-content:center;background:transparent}
+.note{margin-top:18px;font-size:14px}
+</style>
+<div class="wrap">
+  <h1>FDE Engagement Flow</h1>
+  <p>From a new lead to a measured case study. Diamonds are decisions. Every "no" has a defined next move.</p>
+  <div class="legend">
+    <span><i style="background:#DCE6F5;border-color:#2D5DA8"></i>Plain code</span>
+    <span><i style="background:#E7DFF3;border-color:#6A4C9C"></i>Agent</span>
+    <span><i style="background:#F5E8C8;border-color:#8F6500"></i>Human decides</span>
+    <span><i style="background:#F6DAD4;border-color:#B3402E"></i>Stop or loop back</span>
+    <span><i style="background:#D4EBE5;border-color:#0B6E5E"></i>Milestone</span>
+  </div>
+  <div class="fig">
+<pre class="mermaid">
+flowchart TD
+  A(["New lead"]):::ms --> B["20-minute discovery call"]
+  B --> C{"One process with a named owner and sponsor?"}
+  C -- No --> C2["Narrow to one process, or walk away"]:::stop
+  C2 --> C
+  C -- Yes --> D["1. Map the real process: interviews, systems, documents"]
+  D --> E["2. Measure elapsed time vs touch time, count idle days"]
+  E --> F["3. Sort every step"]
+  F --> F1["Not needed: Delete"]:::stop
+  F --> F2["Fixed rule: Plain code"]:::code
+  F --> F3["Needs judgment: Agent drafts"]:::agent
+  F --> F4["Costly mistake: Human decides"]:::human
+  F1 --> G
+  F2 --> G
+  F3 --> G
+  F4 --> G
+  G{"4. Baseline signed off by the owner?"}
+  G -- No --> G2["Pull real timestamps and exports"]:::stop
+  G2 --> G
+  G -- Yes --> H["5. Pitch the outcome and price it"]
+  H --> I{"Client agrees?"}
+  I -- No --> I2["Offer a free or low-cost first project, or stop"]:::stop
+  I2 --> H
+  I -- Yes --> J["6. Build inside the client's own tools"]:::code
+  J --> K["Agent prepares, person approves anything involving money or promises"]:::human
+  K --> L(["Go live on real traffic"]):::ms
+  L --> M["7. Re-measure the same metrics the same way: day 30 small business, month 3 and 6 enterprise"]
+  M --> N{"Metrics improved against baseline?"}
+  N -- No --> N2["Fix exceptions, adjust the sort, re-measure"]:::stop
+  N2 --> M
+  N -- Yes --> O["8. Write the case study: before map, after map, owner quote, running cost"]:::ms
+  O --> P(["Price the next project from the measured result"]):::ms
+
+  classDef code fill:#DCE6F5,stroke:#2D5DA8,color:#16221F,stroke-width:1.5px
+  classDef agent fill:#E7DFF3,stroke:#6A4C9C,color:#16221F,stroke-width:1.5px
+  classDef human fill:#F5E8C8,stroke:#8F6500,color:#16221F,stroke-width:1.5px
+  classDef stop fill:#F6DAD4,stroke:#B3402E,color:#16221F,stroke-width:1.5px
+  classDef ms fill:#D4EBE5,stroke:#0B6E5E,color:#16221F,stroke-width:1.5px
+</pre>
+  </div>
+  <p class="note">Numbers 1 to 8 match the stages in the FDE Playbook. The flow is the same for a small business and an enterprise. What changes is the timeline: 30 days and a day-90 check for a small shop, 8 weeks and 3 and 6 month audits for an enterprise.</p>
+</div>
+
+<script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs"; mermaid.initialize({startOnLoad:true,securityLevel:"strict"});</script>
